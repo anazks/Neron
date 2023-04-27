@@ -1,0 +1,32 @@
+{% extends 'login.html' %}
+{% block content %}
+
+
+{% for message in messages %}
+ <h6  style="color: red;"> {{message}} </h6>
+{% endfor %}
+
+<div class="container mt-4">
+    <form class="row" method="POST" action="{% url 'registration' %}">
+      {% csrf_token %}
+
+      <div class="col-md-3">
+        <div class="form-group">
+     
+                    {% csrf_token %}
+                  {% for i in user  %}
+                  {{i.label}}<br>
+                  {{i}}<br><br>
+                  
+                  {% endfor %}
+                  {{form.errors}}
+                </div>
+
+                <button type="submit" class="btn-lg btn-block btn btn-danger mb-5">
+                    Register
+                  </button>
+                </div>
+              </form>
+            </div>
+
+{% endblock %}

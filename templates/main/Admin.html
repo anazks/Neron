@@ -1,0 +1,68 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A Web Application for Heart Disease Prediction, Diabetes Prediction and Breast Cancer Prediciton using various Machine Learning Algorithms based on the Kaggle Datasets.">
+  <meta name="keywords" content="Machine Learning, Django">
+  <meta name="author" content="anaz">
+    <title>WEB DOCTOR</title>
+
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawsom-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/slider/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/slider/css/owl.theme.default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+<body style="background-color: black;">
+    <div class="container body-container">
+        <!-- ################# Header Starts Here#######################--->
+        <header>
+            
+                <div class="row header-nav">
+                    <div class="col-md-3 no-padding col-sm-12 nav-img">
+                        <img style="height: 100px;width: 800px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN9DFtFFPDzkNM4nsSd0A91OAOgC4Ue7OH-JYBcO9HG7Xe8A-nE5vSQRd0r_NzFuiGfrs&usqp=CAU" alt="">
+                       <a data-toggle="collapse" data-target="#menu" href="#menu" ><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                    </div>
+                    <div id="menu" class="col-md-9 d-none d-md-block nav-item">
+                        <ul>
+                            <li><a href="{%url 'doctor_list' %}">Home</a></li>
+                            <li><a href="{%url 'add_doctor' %}">Add Doctor</a></li>
+                            <li><a href="{%url 'consultation_request' %}">View Consultaion Requests</a></li>
+                            <li><a href="{% url 'signout' %}">LogOut</a></li>
+                            <li><a href="">{{request.user.first_name}}</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+        
+        </header>
+
+
+
+  	
+{% block content %}
+
+{% for message in messages %}
+<h4  style="color: green;"> {{message}} </h4>
+{% endfor %}
+{% endblock %}
+
+   
+</div>
+
+</body>
+
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/scroll-fixed/jquery-scrolltofixed-min.js' %}"></script>
+<script src="{% static 'plugins/slider/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+
+</html>

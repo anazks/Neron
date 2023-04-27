@@ -1,0 +1,59 @@
+{% extends 'main/Admin.html' %}
+{% block content %}
+{% for message in messages %}
+<h4  style="color: green;"> {{message}} </h4>
+{% endfor %}
+<br>
+<table style='border:2px black solid'>
+    <h3>Consultation Requests</h3>
+    <tr style='border:2px black solid ; width:200px' >
+        <th style='border:2px black solid ; width:200px'>
+            Patiant Name
+        </th>
+        <th style='border:2px black solid; width:200px'>
+            Patiant Disease
+        </th>
+        <th style='border:2px black solid; width:200px'>
+            Doctor Name
+        </th>
+        <th style='border:2px black solid; width:200px'>
+            Date
+        </th>
+        <th style='border:2px black solid; width:200px'>
+            Time
+        </th >
+        <th style='border:2px black solid; width:200px'>
+            Action
+        </th>
+    </tr><br><br>
+    
+{% for request in requests %}
+
+    <tr style='border:2px black solid'>
+        <td style='border:2px black solid'>
+            {{request.Patiant_name}}
+        </td>
+        <td style='border:2px black solid'>
+            {{request.Patiant_disease}}
+        </td>
+        <td style='border:2px black solid'>
+            {{request.Doctor_name}}
+        </td>
+        <td style='border:2px black solid'>
+            {{request.appointment_date}}
+        </td >
+        <td style='border:2px black solid'>
+            {{request.appoiment_time}}
+        </td>
+        <td style='border:2px black solid'>
+            <form action = "{%url 'consultation_delete' %}" method='POST'>
+                {% csrf_token %}
+                <button value='{{request.id}}' class="btn btn-outline-danger" name='submit' >Delete</button>
+            </form>
+        </td>
+    </tr>
+
+{% endfor %}
+</table>
+
+{% endblock %}

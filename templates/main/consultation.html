@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Doctor Consultation</h1>
+
+<div class="container mt-4">
+    <form class="row" method="POST" action="{% url 'appointment' %}">
+      {% csrf_token %}
+
+      <div class="col-md-10">
+        <div class="form-group">
+          <label for="name">Patiant Name</label>
+          <input
+            class="form-control"
+            id="name"
+            placeholder="{{name}}"
+            Value="{{name}}"
+            name="name"
+            readonly
+          />
+          <label for="name">Disease</label>
+          <input
+            class="form-control"
+            id="name"
+            placeholder="{{disease}}"
+            Value="{{disease}}"
+            name="disease"
+            readonly
+          />
+          <label for="Doctor">Select Doctor</label>
+          <select required class="form-control" id="doctor" name="doctor" >
+            <option value="" disabled selected>Select Doctor</option>
+            {%for doctor in doctors %}
+            <option value="{{doctor.Doctor_name}}">{{doctor.Doctor_name}}</option>
+            {%endfor%}
+            
+          </section>
+          <label for="date">Select Date</label>
+          <input type='date' name='date' class="form-control"/>
+          <label for="time">Select Time</label>
+          <input type='time' name='time' class="form-control"/>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <button type="submit" class="btn-lg btn-block btn btn-danger mb-5">
+          Book Now
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+</section>
+
+{% endblock %}

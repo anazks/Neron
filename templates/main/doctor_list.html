@@ -1,0 +1,47 @@
+
+{% extends 'main/Admin.html' %}
+{% block content %}
+{% for message in messages %}
+<h4  style="color: green;"> {{message}} </h4>
+<style>
+    table{
+        margin-left: auto;
+  margin-right: auto;
+    }
+</style>
+{% endfor %}
+<table style='border:2px black solid;margin-left: auto;
+margin-right: auto;'>
+    <h3>Doctor list</h3>
+    <tr style='border:2px black solid ; width:200px' >
+        <th style='border:2px black solid ; width:200px'>
+            Doctor Name
+        </th>
+        <th style='border:2px black solid; width:200px'>
+            Doctor Specialisation
+        </th>
+        <th style='border:2px black solid; width:200px'>
+            Action
+        </th>
+    </tr>  <br><br>
+{% for doctor in doctors %}
+    <tr style='border:2px black solid'>
+        <td style='border:2px black solid'>
+            {{doctor.Doctor_name}}
+        </td>
+        <td style='border:2px black solid'>
+            {{doctor.Doctor_spacial}}
+        </td>
+        <td style='border:2px black solid'>
+            <form method='POST'>
+                {% csrf_token %}
+                <button value='{{doctor.id}}' name='submit' style="text-align:center;" class="btn btn-outline-danger" >Delete</button>
+            </form>
+        </td>
+    </tr>
+
+{% endfor %}
+</table>
+{% endblock %}
+
+

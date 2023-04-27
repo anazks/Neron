@@ -1,0 +1,45 @@
+{% extends 'main/Admin.html' %}
+
+{% block content %}
+
+<h1>Add Doctor 
+</h1>
+
+<div class="container mt-4">
+    <form class="row" method="POST" action="{% url 'add_doctor' %}">
+      {% csrf_token %}
+
+      <div class="col-md-10">
+        <div class="form-group">
+          <label for="name">Doctor Name</label>
+          <input
+            class="form-control"
+            id="name"
+            placeholder="Doctor Name"
+            name="name"
+          />
+          
+          <label for="spacial">Doctor Specialisation</label>
+          <select required class="form-control" id="doctor" name="spacial" >
+            <option value="" disabled selected>Select Doctor Specialisation</option>
+            <option value="Neurologists">Neurologists</option>
+            <option value="Obstetrics & Gynaecology">Obstetrics & Gynaecology</option>
+            <option value="Orthopedics">Orthopedics</option>
+          </section>
+          <label for="date">Select Date</label>
+          <input type='date' name='date' class="form-control"/>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <button type="submit" class="btn-lg btn-block btn btn-danger mb-5">
+          Add Doctor
+        </button>
+      </div>
+     
+    </form>
+  </div>
+
+
+</section>
+
+{% endblock %}
